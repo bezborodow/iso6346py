@@ -11,6 +11,9 @@ def normalize(s):
 
 
 def format(s, box=False):
+    '''
+    Nicely format an ISO 6346 owner number.
+    '''
     s = normalize(s)
     if len(s) != 11:
         return s
