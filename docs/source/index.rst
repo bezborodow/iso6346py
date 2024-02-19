@@ -1,3 +1,6 @@
+API
+===
+
 .. currentmodule:: iso6346
 
 .. autofunction:: normalize
