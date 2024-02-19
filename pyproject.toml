@@ -1,5 +1,5 @@
 [project]
-name = "iso6346"
+name = "iso6346-containers"
 version = "0.0.1"
 authors = [
   { name="Damien Bezborodov", email="dbezborodov@gmail.com" },
