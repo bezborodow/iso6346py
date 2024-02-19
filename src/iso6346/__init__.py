@@ -79,5 +79,4 @@ def checkdigit(s):
         sum = sum + n << i
 
     # Modulus of 11, and map 10 to 0.
-    sum = sum % 11 % 10
-    return sum
+    return sum % 11 % 10
