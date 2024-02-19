@@ -10,3 +10,4 @@ python:
       path: .
 sphinx:
   builder: dirhtml
+  configuration: docs/source/conf.py
