@@ -1,6 +1,5 @@
 version: 2
 build:
-  os: fedora-38
   tools:
     python: "3.11"
   python:
