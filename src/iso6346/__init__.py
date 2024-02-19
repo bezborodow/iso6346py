@@ -1,7 +1,11 @@
 import re
 
 
-def iso6346_checksum(s):
+def checksum(s):
+    '''
+    Calculate ISO 6346 checksum.
+    '''
+
     # Remove any non-alphanumeric characters and convert to upper-case.
     s = re.sub(r'[^A-Z0-9]', '', s.upper())
 
@@ -29,9 +33,9 @@ def iso6346_checksum(s):
     return sum
 
 
-def iso6346_validate(s):
+def validate(s):
     pass
 
 
-def iso6346_format(s):
+def format(s):
     pass
