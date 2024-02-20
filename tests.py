@@ -3,8 +3,6 @@ import src.iso6346 as iso6346
 
 
 class TestIso6346(unittest.TestCase):
-
-
     def test_checkdigit(self):
         self.assertEqual(iso6346.checkdigit('ZEPU0037255'), 5,
                          'Incorrect checkdigit.')
@@ -13,6 +11,11 @@ class TestIso6346(unittest.TestCase):
     def test_validate(self):
         self.assertEqual(iso6346.validate('ZEPU0037255'), True,
                          'Incorrect validation, should pass.')
+
+
+    def test_validate_fail(self):
+        with self.assertRaises(ValueError):
+            iso6346.validate('ZEPU0037252')
 
 
     def test_format(self):
