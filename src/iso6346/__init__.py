@@ -1,6 +1,20 @@
 import re
 
 
+
+class ValidationError(ValueError):
+    '''
+    Parent class of all validation errors.
+    '''
+    pass
+
+class InvalidOwnerCodeError(ValidationError):
+    '''
+    Invalid ISO6346 CSC Owner Code
+    '''
+    pass
+
+
 def normalize(s):
     '''
     Normalise an ISO 6346 owner number for database storage.
@@ -34,7 +48,7 @@ def validate(s):
 
     Will return the True if valid.
 
-    Otherwise, will raise a ValueError exception if invalid.
+    Otherwise, will raise an InvalidOwnerCodeError exception if invalid.
     '''
 
     # Normalise.
@@ -42,11 +56,11 @@ def validate(s):
 
     # Validate.
     if len(s) != 11:
-        raise ValueError('Invalid ISO 6346 container owner number (incorrect length.)')
+        raise InvalidOwnerCodeError('Invalid ISO 6346 container owner number (incorrect length.)')
     d = checkdigit(s)
     e = int(s[10])
     if d != e:
-        raise ValueError(f'Invalid ISO 6346 container owner number (checkdigit mismatch: expected {d}; got {e}.)')
+        raise InvalidOwnerCodeError(f'Invalid ISO 6346 container owner number (checkdigit mismatch: expected {d}; got {e}.)')
 
     return True
 
@@ -63,9 +77,9 @@ def checkdigit(s):
 
     # Check string formatting.
     if len(s) < 10 or len(s) > 11:
-        raise ValueError('Invalid ISO 6346 container owner number (incorrect length.)')
+        raise InvalidOwnerCodeError('Invalid ISO 6346 container owner number (incorrect length.)')
     if not re.fullmatch(r'^[A-Z]{4}[0-9]{6,7}$', s):
-        raise ValueError('Invalid ISO 6346 container owner number (incorrect format.)')
+        raise InvalidOwnerCodeError('Invalid ISO 6346 container owner number (incorrect format.)')
 
     # Calculate check digit.
     sum = 0

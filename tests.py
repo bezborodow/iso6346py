@@ -14,7 +14,7 @@ class TestIso6346(unittest.TestCase):
 
 
     def test_validate_fail(self):
-        with self.assertRaises(ValueError):
+        with self.assertRaises(iso6346.InvalidOwnerCodeError):
             iso6346.validate('ZEPU0037252')
 
 
