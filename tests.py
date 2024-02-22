@@ -7,6 +7,13 @@ class TestIso6346(unittest.TestCase):
         self.assertEqual(iso6346.checkdigit('ZEPU0037255'), 5,
                          'Incorrect checkdigit.')
 
+        self.assertEqual(iso6346.checkdigit('COTU 217082 3'), 3)
+        self.assertEqual(iso6346.checkdigit('SLEU 491429 5'), 5)
+        self.assertEqual(iso6346.checkdigit('MCCU 308363 7'), 7)
+        self.assertEqual(iso6346.checkdigit('MCCU 308272 8'), 8)
+        self.assertEqual(iso6346.checkdigit('DDDU 501060 0'), 0)
+        self.assertEqual(iso6346.checkdigit('TIHU 511912 2'), 2)
+
 
     def test_validate(self):
         self.assertEqual(iso6346.validate('ZEPU0037255'), True,
