@@ -86,17 +86,14 @@ def checkdigit(s):
     for i in range(0, 10):
         # Map letters to numbers.
         n = ord(s[i])
-        if n < 58:
-            n = n - 48
-        else:
-            n = n - 55
+        n -= 48 if n < 58 else 55
 
         # Numbers 11, 22, 33 are omitted.
         if n:
-            n = n + (n-1) // 10
+            n += (n-1) // 10
 
         # Sum of all numbers multiplied by weighting.
-        sum = sum + (n << i)
+        sum += n << i
 
     # Modulus of 11, and map 10 to 0.
-    return (sum % 11) % 10
+    return sum % 11 % 10
